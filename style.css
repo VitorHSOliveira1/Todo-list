@@ -1,0 +1,162 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: gray;
+    color: gray;
+}
+
+#todo-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+#todo-list li {
+    padding: 10px;
+    border-bottom: 1px solid #ccc;
+}
+
+#todo-list li:last-child {
+    border-bottom: none;
+}
+
+#todo-list input[type="checkbox"] {
+    margin-right: 10px;
+}
+
+#todo-list label {
+    cursor: pointer;
+}
+
+#new-task {
+    width: 50%;
+    padding: 10px;
+    font-size: 16px;
+    border: 1px solid gray;
+}
+
+#add-task {
+    background-color: white;
+    color: gray;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.edit-btn, .delete-btn {
+    position: relative; /* Updated to relative positioning */
+    z-index: 2; /* Set a higher z-index */
+    background-color: white;
+    border: none;
+    padding: 8px 5px;
+    font-size: 14px;
+    border-radius: 10px;
+    width: 30px;
+    height: 30px;
+    cursor: pointer;
+}
+
+.edit-btn:hover, .delete-btn:hover {
+    background-color: #ccc;
+}
+
+.center-todo{
+    display: block;
+    text-align: center;
+}
+
+.todo-things {
+        position: relative;
+        background-color: #fff;
+        margin: 0 auto; /* Keep this to center the div horizontally */
+        width: 35vw; /* Set width to 40% of viewport width */
+        height: calc(92vh - 20px);; /* Set height to 67% of viewport height */
+        padding: 2vw; /* Set padding to 2% of viewport width */
+        border: 1px solid black; /* Keep this for border */
+        border-radius: 10px; /* Keep this for border radius */
+    }
+
+    @media only screen and (max-width: 768px) {
+        .todo-things {
+            width: 80vw; /* Increase width to 80% of viewport width on mobile devices */
+            height: calc(80vh - 20px);; /* Set height to 67% of viewport height */
+        }
+    }
+
+.open-add-task{
+    cursor: pointer;
+    position: absolute;
+    bottom: 20px;
+    right: 20px;
+    background-color: white;
+    border: 1px solid gray;
+    color: gray;
+    width: 40px;
+    height: 40px;
+    border-radius: 15px;
+}
+
+.modal-add-tasks {
+    display: none;
+    position: fixed;
+    gap: 5px; 
+    top: 480px;
+    right: 80px;
+    width: 200px;
+    height: 100px;
+    background-color: #fff;
+    padding: 20px;
+    border: 1px solid gray;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    z-index: 1; 
+    transform: translateZ(0); 
+    flex-direction: column;
+    justify-content: center;
+}
+
+#newTaskInput{
+    position: absolute;
+    top: 30px;
+    right: 18px;
+    height: 25px;
+    width: 200px;
+    border: 1px solid gray;
+    border-radius: 10px;
+}
+
+#addTaskBtn{
+    cursor: pointer;
+    position: absolute;
+    left: 85px;
+    bottom: 25px;
+    width: 80px;
+    height: 30px;
+    color: gray;
+    border: 1px solid gray;
+    border-radius: 10px;
+}
+
+#edit-input{
+    width: 100px;
+    border-radius: 10px;
+    border: 1px solid gray;
+}
+
+#save-edit-btn{
+    background-color: white;
+    border-radius: 10px;
+    border: 1px solid gray;
+    cursor: pointer;
+}
+
+.ana-marcia-corna{
+    background-color: blueviolet;
+    width: 50px;
+    height: 50px;
+    bottom: 100px;
+} 
+
+.center-todo{
+    color: gray;
+}
