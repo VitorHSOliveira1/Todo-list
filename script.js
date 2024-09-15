@@ -14,7 +14,7 @@ let inputElement;
 let newLabelElement;
 let newTaskText;
 
-// Retrieve todo list items from local storage
+
 let todoListItems = JSON.parse(localStorage.getItem('todoListItems')) || [];
 
 function openAndCloseModal() {
@@ -23,14 +23,11 @@ function openAndCloseModal() {
 }
 
 function addEventListenersForEditAndDeleteButtons() {
-    // Add event listeners to the edit buttons
+
     document.querySelectorAll('.edit-btn').forEach((editButton) => {
       editButton.addEventListener('click', (event) => {
-        // Get the parent li element
         liElement = event.target.parentNode;
-        // Get the label element
         labelElement = liElement.querySelector('label');
-        // Create a new modal element
         const editModal = document.createElement('div');
         editModal.className = 'edit-modal';
         editModal.innerHTML = `
@@ -39,33 +36,24 @@ function addEventListenersForEditAndDeleteButtons() {
                 <button id="save-edit-btn" style="width: 70px;">Save</button>
             </div>
         `;
-        // Add the modal to the li element
+          
         liElement.appendChild(editModal);
-        // Add an event listener to the save button
         const saveEditBtn = editModal.querySelector('#save-edit-btn');
         saveEditBtn.addEventListener('click', (event) => {
-          // Get the new task text
           newTaskText = editModal.querySelector('#edit-input').value.trim();
-          // Replace the label element with the new text
           labelElement.textContent = newTaskText;
-          // Update the todo list item in local storage
           const index = Array.prototype.indexOf.call(todoList.children, liElement);
           todoListItems[index].text = newTaskText;
           localStorage.setItem('todoListItems', JSON.stringify(todoListItems));
-          // Remove the modal
           liElement.removeChild(editModal);
         });
       });
     });
 
-    // Add event listeners to the delete buttons
     document.querySelectorAll('.delete-btn').forEach((deleteButton) => {
       deleteButton.addEventListener('click', (event) => {
-        // Get the parent li element
         liElement = event.target.parentNode;
-        // Remove the li element from the todo list
         todoList.removeChild(liElement);
-        // Remove the todo list item from local storage
         const index = Array.prototype.indexOf.call(todoList.children, liElement);
         todoListItems.splice(index, 1);
         localStorage.setItem('todoListItems', JSON.stringify(todoListItems));
@@ -77,7 +65,6 @@ addTaskForm.addEventListener("submit", function(event) {
     event.preventDefault();
     newTask = newTaskInput.value.trim();
     if (newTask !== "") {
-        // Add the new task to the todo list
         newTaskLi = document.createElement("li");
         newTaskLi.innerHTML = `
             <input type="checkbox"> 
@@ -88,7 +75,6 @@ addTaskForm.addEventListener("submit", function(event) {
         todoList.appendChild(newTaskLi);
         newTaskInput.value = "";
 
-        // Add the new task to local storage
         todoListItems.push({ text: newTask, completed: false });
         localStorage.setItem('todoListItems', JSON.stringify(todoListItems));
     }
@@ -96,7 +82,6 @@ addTaskForm.addEventListener("submit", function(event) {
     addEventListenersForEditAndDeleteButtons();
 });
 
-// Load todo list items from local storage
 todoListItems.forEach((item) => {
   const newTaskLi = document.createElement("li");
   newTaskLi.innerHTML = `
@@ -109,40 +94,27 @@ todoListItems.forEach((item) => {
   addEventListenersForEditAndDeleteButtons();
 });
 
-// Add event listener to the "open-add-task" button
 openAddTask.addEventListener("click", openAndCloseModal);
 
 function turnAllThingsPink(){
-  // Change the background color of the body
   document.body.style.backgroundColor = 'pink';
   
-  // Change the text color of the todo list
   document.querySelector('#todo-list').style.color = 'pink';
   
-  // Change the border color of the todo list items
   document.querySelectorAll('#todo-list li').forEach((li) => {
       li.style.borderColor = 'pink';
   });
   
-  // Change the color of the edit and delete buttons
   document.querySelectorAll('.edit-btn, .delete-btn').forEach((button) => {
       button.style.backgroundColor = 'pink';
       button.style.borderColor = 'pink';
   });
   
-  // Change the color of the add task button
   document.querySelector('#addTaskBtn').style.backgroundColor = 'pink';
   document.querySelector('#addTaskBtn').style.borderColor = 'pink';
-  
-    // Change the color of the new task input
   document.querySelector('#newTaskInput').style.borderColor = 'pink';
-  
-  // Change the color of the modal add tasks
   document.querySelector('.modal-add-tasks').style.borderColor = 'pink';
-  
-  // Change the color of the anaMarciaCorna element
   document.querySelector('.ana-marcia-corna').style.backgroundColor = 'pink';
-
   document.querySelector(".center-todo").style.color = 'pink';
 }
 
